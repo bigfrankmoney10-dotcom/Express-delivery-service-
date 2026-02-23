@@ -1,1 +1,1 @@
-A responsive and visually engaging web application for tracking shipments and showcasing delivery services. The app includes features like live tracking, customer reviews, delivery wall gallery, subscription newsletter, business hours, support popup, and Google Maps integration.
+A responsive and visually engaging web application for tracking shipments and showcasing delivery services. The app includes features like live tracking, customer reviews, delivery wall gallery,subscription newsletter, business hours, support popup, and Google Maps integration.
