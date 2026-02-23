@@ -1,0 +1,39 @@
+# Node modules (if you ever use Node for builds)
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+*.suo
+*.user
+*.sln
+*.swp
+*.idea/
+
+# Build directories
+dist/
+build/
+tmp/
+temp/
+
+# Environment files
+.env
+
+# Compiled or minified assets
+*.min.js
+*.min.css
+
+# Media cache or temp uploads
+*.tmp
+*.cache
+
+# Package manager lock files (optional if you want to ignore)
+package-lock.json
+yarn.lock
