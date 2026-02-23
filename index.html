@@ -1,435 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rchies Mobile - Banking Platform</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .container {
-            max-width: 400px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .menu {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
-        .menu-item {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            margin: 5px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-        .menu-item:hover {
-            background: #0056b3;
-        }
-        .form-section {
-            display: none;
-            padding: 20px;
-        }
-        .form-section.active {
-            display: block;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select, button {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            background: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #218838;
-        }
-        .back-btn {
-            background: #6c757d;
-            margin-bottom: 20px;
-        }
-        .back-btn:hover {
-            background: #5a6268;
-        }
-        .balance {
-            text-align: center;
-            padding: 10px;
-            background: #e9ecef;
-            font-weight: bold;
-        }
-        .history-list {
-            list-style: none;
-            padding: 0;
-        }
-        .history-item {
-            background: #f8f9fa;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        .rewards-section {
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Rchies Mobile</h1>
-        <p>Your Secure Banking & Payment App</p>
-    </div>
-    
-    <div class="container">
-        <div class="balance">
-            Account Balance: ₦50,000.00
-        </div>
-        
-        <div id="main-menu" class="menu">
-            <button class="menu-item" onclick="showForm('deposit')">Deposit</button>
-            <button class="menu-item" onclick="showForm('withdraw')">Withdraw</button>
-            <button class="menu-item" onclick="showForm('betting')">Fund Betting</button>
-            <button class="menu-item" onclick="showForm('electricity')">Electricity Bill</button>
-            <button class="menu-item" onclick="showForm('water')">Water Bill</button>
-            <button class="menu-item" onclick="showForm('recharge')">Airtime Recharge</button>
-            <button class="menu-item" onclick="showForm('data')">Data Subscription</button>
-            <button class="menu-item" onclick="showForm('tv')">TV Recharge</button>
-            <button class="menu-item" onclick="showForm('loan')">Apply for Loan</button>
-            <button class="menu-item" onclick="showForm('history')">Transaction History</button>
-            <button class="menu-item" onclick="showForm('checkin')">Daily Check-In</button>
-            <button class="menu-item" onclick="showForm('rewards')">Rewards & Bonuses</button>
-            <button class="menu-item" onclick="showForm('more')">More Options</button>
-        </div>
-        
-        <!-- Deposit Form -->
-        <div id="deposit" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Deposit Funds</h3>
-            <form>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Payment Method</label>
-                    <select>
-                        <option>Bank Transfer</option>
-                        <option>Card</option>
-                        <option>USSD</option>
-                    </select>
-                </div>
-                <button type="submit">Deposit Now</button>
-            </form>
-        </div>
-        
-        <!-- Withdraw Form -->
-        <div id="withdraw" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Withdraw Funds</h3>
-            <form>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Account Number</label>
-                    <input type="text" placeholder="Enter bank account number" required>
-                </div>
-                <button type="submit">Withdraw</button>
-            </form>
-        </div>
-        
-        <!-- Betting Fund Form -->
-        <div id="betting" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Fund Betting Platform</h3>
-            <form>
-                <div class="form-group">
-                    <label>Platform</label>
-                    <select required>
-                        <option>Sporty Bet</option>
-                        <option>1x Bet</option>
-                        <option>Betano</option>
-                        <option>MSport</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Wallet ID/Phone</label>
-                    <input type="text" placeholder="Enter wallet ID or phone number" required>
-                </div>
-                <button type="submit">Fund Account</button>
-            </form>
-        </div>
-        
-        <!-- Electricity Bill Form -->
-        <div id="electricity" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Pay Electricity Bill</h3>
-            <form>
-                <div class="form-group">
-                    <label>Meter Number</label>
-                    <input type="text" placeholder="Enter meter number" required>
-                </div>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Provider</label>
-                    <select>
-                        <option>EKEDC</option>
-                        <option>IKEDC</option>
-                        <option>PHCN</option>
-                        <!-- Add more providers as needed -->
-                    </select>
-                </div>
-                <button type="submit">Pay Bill</button>
-            </form>
-        </div>
-        
-        <!-- Water Bill Form -->
-        <div id="water" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Pay Water Bill</h3>
-            <form>
-                <div class="form-group">
-                    <label>Account Number</label>
-                    <input type="text" placeholder="Enter account number" required>
-                </div>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Provider</label>
-                    <select>
-                        <option>Lagos Water Corporation</option>
-                        <option>Abuja Water Board</option>
-                        <!-- Add more providers as needed -->
-                    </select>
-                </div>
-                <button type="submit">Pay Bill</button>
-            </form>
-        </div>
-        
-        <!-- Airtime Recharge Form -->
-        <div id="recharge" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Airtime Recharge</h3>
-            <form>
-                <div class="form-group">
-                    <label>Network</label>
-                    <select required>
-                        <option>MTN</option>
-                        <option>Airtel</option>
-                        <option>9mobile</option>
-                        <option>Glo</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" placeholder="Enter phone number" required>
-                </div>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <button type="submit">Recharge Now</button>
-            </form>
-        </div>
-        
-        <!-- Data Subscription Form -->
-        <div id="data" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Data Subscription</h3>
-            <form>
-                <div class="form-group">
-                    <label>Network</label>
-                    <select required>
-                        <option>MTN</option>
-                        <option>Airtel</option>
-                        <option>9mobile</option>
-                        <option>Glo</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" placeholder="Enter phone number" required>
-                </div>
-                <div class="form-group">
-                    <label>Data Plan</label>
-                    <select required>
-                        <option>500MB - ₦200</option>
-                        <option>1GB - ₦300</option>
-                        <option>2GB - ₦500</option>
-                        <option>5GB - ₦1000</option>
-                        <!-- Add more plans as needed -->
-                    </select>
-                </div>
-                <button type="submit">Subscribe Now</button>
-            </form>
-        </div>
-        
-        <!-- TV Recharge Form -->
-        <div id="tv" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>TV Recharge</h3>
-            <form>
-                <div class="form-group">
-                    <label>Provider</label>
-                    <select required>
-                        <option>DSTV</option>
-                        <option>GOTV</option>
-                        <option>Startimes</option>
-                        <!-- Add more providers as needed -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Smartcard Number</label>
-                    <input type="text" placeholder="Enter smartcard number" required>
-                </div>
-                <div class="form-group">
-                    <label>Amount (₦)</label>
-                    <input type="number" placeholder="Enter amount" required>
-                </div>
-                <button type="submit">Recharge Now</button>
-            </form>
-        </div>
-        
-        <!-- Loan Application Form -->
-        <div id="loan" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Apply for Loan</h3>
-            <form>
-                <div class="form-group">
-                    <label>Loan Amount (₦)</label>
-                    <input type="number" placeholder="Enter loan amount" required>
-                </div>
-                <div class="form-group">
-                    <label>Duration (Months)</label>
-                    <select required>
-                        <option>3</option>
-                        <option>6</option>
-                        <option>12</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Purpose</label>
-                    <input type="text" placeholder="Enter loan purpose" required>
-                </div>
-                <button type="submit">Apply Now</button>
-            </form>
-        </div>
-        
-        <!-- Transaction History -->
-        <div id="history" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Transaction History</h3>
-            <ul class="history-list">
-                <li class="history-item">Deposit: ₦10,000 - 2023-10-01</li>
-                <li class="history-item">Withdraw: ₦5,000 - 2023-10-02</li>
-                <li class="history-item">Airtime Recharge: ₦500 - 2023-10-03</li>
-                <li class="history-item">Betting Fund: ₦2,000 - 2023-10-04</li>
-                <!-- Add more demo transactions -->
-            </ul>
-        </div>
-        
-        <!-- Daily Check-In -->
-        <div id="checkin" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Daily Check-In for Rewards</h3>
-            <div class="rewards-section">
-                <p>Check in daily to earn rewards!</p>
-                <button onclick="alert('Checked in! You earned 50 points. (Demo Mode)')">Check In Now</button>
-            </div>
-        </div>
-        
-        <!-- Rewards & Bonuses -->
-        <div id="rewards" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>Rewards & Bonuses</h3>
-            <div class="rewards-section">
-                <p>Available Rewards: 200 points</p>
-                <button onclick="alert('Bonus claimed! ₦100 added to your account. (Demo Mode)')">Claim Bonus</button>
-            </div>
-        </div>
-        
-        <!-- More Options -->
-        <div id="more" class="form-section">
-            <button class="back-btn" onclick="showMenu()">← Back</button>
-            <h3>More Options</h3>
-            <div class="menu">
-                <button class="menu-item">Settings</button>
-                <button class="menu-item">Support</button>
-                <button class="menu-item">About Us</button>
-                <!-- Add more sub-options as needed -->
-            </div>
-        </div>
-    </div>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express Delivery Service</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#000;scroll-behavior:smooth;}
+a{color:#1e90ff;text-decoration:none;}
+h1,h2,h3,h4,h5,h6{color:#1e90ff;margin:0;}
 
-    <script>
-        function showForm(formId) {
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(formId).classList.add('active');
-            document.getElementById('main-menu').style.display = 'none';
-        }
-        
-        function showMenu() {
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('main-menu').style.display = 'flex';
-        }
-        
-        // Handle form submissions (demo - alert success)
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Transaction processed successfully! (Demo Mode)');
-                showMenu();
-            });
-        });
-    </script>
-</body>
-</html>
+/* Header Video Background */
+header{position:relative;height:400px;overflow:hidden;}
+header video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+header .header-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2;color:#fff;text-shadow:2px 2px 8px rgba(0,0,0,0.7);}
+header .header-overlay h1{font-size:2.5rem;font-weight:bold;letter-spacing:2px;margin-bottom:10px;}
+header .header-overlay p{font-size:1rem;max-width:700px;margin:0 auto;line-height:1.4;}
+
+/* Navbar */
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#f8f8f8;position:sticky;top:0;z-index:1000;border-bottom:1px solid #ddd;}
+.nav-links{display:flex;gap:15px;}
+.nav-links a{cursor:pointer;font-weight:bold;color:#1e90ff;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;}
+.hamburger div{width:20px;height:2px;background-color:#1e90ff;margin:3px 0;}
+@media(max-width:768px){.nav-links{display:none;flex-direction:column;background:#f8f8f8;position:absolute;top:60px;right:0;width:200px;padding:15px;}.nav-links.active{display:flex;}.hamburger{display:flex;}}
+
+/* Sections */
+section{padding:20px;scroll-margin-top:60px;}
+.section-title{font-size:1.5rem;margin-bottom:15px;color:#1e90ff;}
+
+/* Tracking */
+.tracking{display:flex;gap:10px;margin-bottom:15px;}
+.tracking input{flex:1;padding:8px;border:1px solid #ddd;border-radius:3px;background:#fff;color:#000;font-size:0.9rem;}
+.tracking input::placeholder{text-transform:uppercase;font-size:0.8rem;}
+.tracking button{padding:8px 15px;border:none;border-radius:3px;background-color:#1e90ff;color:white;cursor:pointer;}
+.shipment-tracking,.shipment-content{max-width:500px;margin:10px auto;padding:15px;font-family:'Courier New',Courier,monospace;font-size:12px;border:1px solid #000;background:#fff;}
+.shipment-tracking .header,.shipment-content .header{font-weight:bold;font-size:14px;margin-bottom:10px;}
+.shipment-content .details label{display:inline-block;width:120px;font-weight:bold;}
+.shipment-content .details span{display:inline-block;margin-left:10px;}
+
+/* Timeline */
+.timeline{position:relative;margin:20px 0;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:4px;background:#ddd;}
+.timeline-event{position:relative;margin-bottom:30px;padding-left:50px;}
+.timeline-event .tick{position:absolute;left:10px;top:0;width:20px;height:20px;border-radius:50%;border:4px solid green;background:#fff;}
+.timeline-event.completed .tick{background:green;box-shadow:0 0 5px #090;}
+.timeline-event .time{font-size:0.85rem;color:blue;margin-top:2px;}
+.timeline-event .description{margin-top:5px;background:#eee;padding:5px;border-radius:3px;font-size:0.9rem;}
+
+/* Map */
+.map-container{width:100%;height:300px;margin:20px 0;overflow:hidden;position:relative;}
+.map-overlay{position:absolute;top:10px;left:50%;transform:translateX(-50%);background-color:rgba(255,255,255,0.8);padding:5px 10px;border-radius:3px;font-size:14px;color:#000;z-index:5;}
+
+/* Newsletter */
+.newsletter{display:flex;gap:10px;margin-top:15px;}
+.newsletter input{flex:1;padding:8px;border-radius:3px;border:1px solid #ddd;background:#fff;color:#000;}
+.newsletter button{padding:8px 15px;border-radius:3px;border:none;background-color:#1e90ff;color:white;cursor:pointer;}
+
+/* Support Popup */
+#supportPopup{display:none;position:fixed;bottom:20px;right:20px;background:#f8f8f8;padding:15px;border-radius:8px;box-shadow:0 0 10px #1e90ff;z-index:10000;color:#000;}
+#supportPopup input,#supportPopup textarea{width:100%;margin-bottom:8px;padding:6px;border-radius:3px;border:1px solid #ddd;background:#fff;color:#000;}
